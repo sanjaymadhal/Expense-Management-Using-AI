@@ -10,12 +10,11 @@ Expense Management Using AI is a smart application that helps users track, manag
 ---
 
 ## ✨ Features
-- **AI-Based Expense Categorization**: Automatically categorize expenses using machine learning.
+- **AI-Based Expense Categorization**: Automatically categorize expenses using inputs.
 - **Spending Insights**: Visualize spending patterns with interactive graphs and dashboards.
 - **Budget Recommendations**: Get personalized suggestions to manage budgets effectively.
-- **Voice and Text Inputs**: Log expenses using voice commands or text entries.
-- **Secure Data Storage**: Encrypt all financial data to ensure user privacy.
-- **Multi-Currency Support**: Track expenses across different currencies.
+
+
 
 ---
 
