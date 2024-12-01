@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Login Page</title>
+    <style>
+        /* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f4f6;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Styles */
+.form-wrapper {
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #007bff;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.signup-text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.signup-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="form-wrapper">
+            <h2>Login</h2>
+            <form action="#" method="post">
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn">Sign In</button>
+                <p class="signup-text">Don't have an account? <a href="#">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+    // Wait for the DOM to fully load
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+    // Form submission event
+    form.addEventListener("submit", (event) => {
+        // Clear any existing error messages
+        clearErrors();
+
+        // Validation
+        let isValid = true;
+
+        // Validate email
+        if (!validateEmail(emailInput.value)) {
+            showError(emailInput, "Please enter a valid email address.");
+            isValid = false;
+        }
+
+        // Validate password
+        if (passwordInput.value.trim() === "") {
+            showError(passwordInput, "Password cannot be empty.");
+            isValid = false;
+        }
+
+        // Prevent form submission if invalid
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+
+    // Helper: Validate email format
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // Helper: Show error message
+    function showError(input, message) {
+        const error = document.createElement("small");
+        error.className = "error-message";
+        error.textContent = message;
+        input.parentElement.appendChild(error);
+        input.classList.add("error");
+    }
+
+    // Helper: Clear all error messages
+    function clearErrors() {
+        document.querySelectorAll(".error-message").forEach((error) => error.remove());
+        document.querySelectorAll(".error").forEach((input) => input.classList.remove("error"));
+    }
+});
+</script>
+</body>
+</html>
